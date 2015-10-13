@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93282BCB1BCDB28F009111E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93282BCA1BCDB28F009111E1 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		93EECC5E198F8CD900142B4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93EECC5D198F8CD900142B4F /* Foundation.framework */; };
 		93EECC60198F8CD900142B4F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93EECC5F198F8CD900142B4F /* CoreGraphics.framework */; };
 		93EECC62198F8CD900142B4F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93EECC61198F8CD900142B4F /* UIKit.framework */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		93282BCA1BCDB28F009111E1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93EECC5A198F8CD900142B4F /* PRSlideViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PRSlideViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93EECC5D198F8CD900142B4F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93EECC5F198F8CD900142B4F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -141,6 +143,7 @@
 				93EECC6C198F8CD900142B4F /* PRAppDelegate.h */,
 				93EECC6D198F8CD900142B4F /* PRAppDelegate.m */,
 				93EECC6F198F8CD900142B4F /* Images.xcassets */,
+				93282BCA1BCDB28F009111E1 /* LaunchScreen.storyboard */,
 				93EECC64198F8CD900142B4F /* Supporting Files */,
 			);
 			path = PRSlideViewExample;
@@ -257,7 +260,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = PR;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Project Rhinestone";
 				TargetAttributes = {
 					93EECC74198F8CD900142B4F = {
@@ -294,6 +297,7 @@
 				93EECCAF1990B1B800142B4F /* D-Sides (Special Edition).jpg in Resources */,
 				93EECC70198F8CD900142B4F /* Images.xcassets in Resources */,
 				93EECCAA1990B1B800142B4F /* G-Sides.jpg in Resources */,
+				93282BCB1BCDB28F009111E1 /* LaunchScreen.storyboard in Resources */,
 				93EECCAC1990B1B800142B4F /* Plastic Beach.jpg in Resources */,
 				93EECCB01990B1B800142B4F /* Laika Come Home.jpg in Resources */,
 				93EECCAB1990B1B800142B4F /* The Fall.jpg in Resources */,
@@ -381,6 +385,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -439,10 +444,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PRSlideViewExample/PRSlideViewExample-Prefix.pch";
 				INFOPLIST_FILE = "PRSlideViewExample/PRSlideViewExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.projectrhinestone.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -452,10 +458,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PRSlideViewExample/PRSlideViewExample-Prefix.pch";
 				INFOPLIST_FILE = "PRSlideViewExample/PRSlideViewExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.projectrhinestone.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -477,6 +484,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PRSlideViewExampleTests/PRSlideViewExampleTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.projectrhinestone.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -495,6 +503,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PRSlideViewExample/PRSlideViewExample-Prefix.pch";
 				INFOPLIST_FILE = "PRSlideViewExampleTests/PRSlideViewExampleTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.projectrhinestone.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
