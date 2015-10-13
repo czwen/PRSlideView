@@ -8,6 +8,8 @@
 
 #import "PRSlideViewPage.h"
 
+CGFloat const kPRSlideViewPageControlHeight = 17.f;
+
 typedef NS_ENUM(NSUInteger, PRSlideViewDirection) {
     PRSlideViewDirectionHorizontal,
     PRSlideViewDirectionVertical
@@ -37,12 +39,14 @@ typedef NS_ENUM(NSUInteger, PRSlideViewDirection) {
 @interface PRSlideView : UIView
 
 @property (nonatomic, readonly) UIScrollView *scrollView;
+@property (nonatomic, readonly) UIPageControl *pageControl;
 
 @property (nonatomic, weak) id<PRSlideViewDelegate> delegate;
 @property (nonatomic, weak) id<PRSlideViewDataSource> dataSource;
 
 @property (nonatomic, assign) PRSlideViewDirection direction;
 @property (nonatomic, assign) BOOL infiniteScrollingEnabled;
+@property (nonatomic, assign) BOOL showsPageControl;
 
 - (NSInteger)currentPageIndex;
 - (NSInteger)numberOfPages;

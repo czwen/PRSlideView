@@ -11,6 +11,7 @@
 @interface PRSlideView ()
 
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIPageControl *pageControl;
 
 @property (nonatomic, assign) NSInteger currentPageActualIndex;
 @property (nonatomic, assign) NSInteger numberOfPages;
@@ -36,6 +37,7 @@
 - (void)resizeContent;
 
 - (void)pageClicked:(PRSlideViewPage *)page;
+- (void)pageControlValueChanged:(UIPageControl *)pageControl;
 
 - (void)setup;
 
@@ -213,6 +215,7 @@
 
 - (void)didScrollToPageAtIndex:(NSInteger)index
 {
+    self.pageControl.currentPage = [self indexForActualIndex:index];
     if ([self.delegate respondsToSelector:@selector(slideView:didScrollToPageAtIndex:)]) {
         [self.delegate slideView:self didScrollToPageAtIndex:[self indexForActualIndex:index]];
     }
@@ -307,6 +310,11 @@
     }
 }
 
+- (void)pageControlValueChanged:(UIPageControl *)pageControl
+{
+    [self scrollToPageAtIndex:pageControl.currentPage];
+}
+
 #pragma mark - Getters and setters
 
 - (NSInteger)currentPageIndex
@@ -328,6 +336,17 @@
 {
     if (_numberOfPages != numberOfPages) {
         _numberOfPages = numberOfPages;
+        
+        UIPageControl *pageControl = self.pageControl;
+        if (self.showsPageControl &&
+            self.direction == PRSlideViewDirectionHorizontal &&
+            CGRectGetWidth(self.bounds) >= [pageControl sizeForNumberOfPages:numberOfPages].width) {
+            pageControl.hidden = NO;
+            pageControl.numberOfPages = numberOfPages;
+        } else {
+            pageControl.hidden = YES;
+        }
+        
         self.baseIndexOffset = self.infiniteScrollingEnabled ? numberOfPages * 256 : 0;
         [self resizeContent];
     }
@@ -365,12 +384,30 @@
         scrollView;
     });
     
+    self.pageControl = ({
+        UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:({
+            CGRect frame;
+            CGRect remainder;
+            CGRectDivide(self.bounds, &frame, &remainder, kPRSlideViewPageControlHeight, CGRectMaxYEdge);
+            frame;
+        })];
+        pageControl.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                                        UIViewAutoresizingFlexibleTopMargin);
+        pageControl.hidesForSinglePage = YES;
+        [pageControl addTarget:self
+                        action:@selector(pageControlValueChanged:)
+              forControlEvents:UIControlEventValueChanged];
+        [self addSubview:pageControl];
+        pageControl;
+    });
+    
     self.classForIdentifiers = [[NSMutableDictionary alloc] init];
     self.reusablePages = [[NSMutableDictionary alloc] init];
     self.loadedPages = [[NSMutableArray alloc] init];
     
     self.direction = PRSlideViewDirectionHorizontal;
     self.infiniteScrollingEnabled = NO;
+    self.showsPageControl = YES;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
