@@ -4,9 +4,15 @@
 
 ## General
 
-Slide view with gracefully written UIKit-like methods, delegate and data source protocol. Infinite scrolling supported.
+Slide view with gracefully written UIKit-like methods, delegate and data source protocol.
 
 Note: Auto layout not supported due to the special behaviours of `UIScrollView`. Please use autoresizing mask instead or wrap it with a container view.
+
+## Features
+
+* Horizontal or vertical scrolling
+* Infinite scrolling
+* Page control (horizontal mode only)
 
 ## Installation
 
@@ -28,6 +34,7 @@ slideView.delegate = self;
 slideView.dataSource = self;
 slideView.direction = PRSlideViewDirectionHorizontal; // horizontal by default
 slideView.infiniteScrollingEnabled = YES; // disabled by default
+slideView.showsPageControl = YES; // enabled by default
 [slideView registerClass:PRAlbumPage.class
   forPageReuseIdentifier:NSStringFromClass(PRAlbumPage.class)];
 slideView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
@@ -53,7 +60,7 @@ self.slideView = slideView;
 
 @implementation PRAlbumPage
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
