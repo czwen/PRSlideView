@@ -368,6 +368,9 @@
     self.classForIdentifiers = [[NSMutableDictionary alloc] init];
     self.reusablePages = [[NSMutableDictionary alloc] init];
     self.loadedPages = [[NSMutableArray alloc] init];
+    
+    self.direction = PRSlideViewDirectionHorizontal;
+    self.infiniteScrollingEnabled = NO;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
