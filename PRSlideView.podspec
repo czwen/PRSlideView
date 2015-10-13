@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "PRSlideView"
-  s.version               = "0.2.2"
+  s.version               = "0.3"
   s.summary               = "Slide view with UIKit-like methods, delegate and data source protocol."
   s.homepage              = "https://github.com/Elethom/PRSlideView"
   s.license               = { :type => "MIT", :file => "LICENSE" }
