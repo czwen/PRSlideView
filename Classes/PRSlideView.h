@@ -47,7 +47,7 @@ typedef NS_ENUM(NSUInteger, PRSlideViewDirection) {
 - (NSInteger)currentPageIndex;
 - (NSInteger)numberOfPages;
 
-- (id)dequeueReusablePageWithIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
+- (__kindof PRSlideViewPage *)dequeueReusablePageWithIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
 
 - (void)registerClass:(Class)pageClass forPageReuseIdentifier:(NSString *)identifier;
 

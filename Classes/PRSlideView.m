@@ -45,7 +45,7 @@
 
 #pragma mark - Create pages
 
-- (id)dequeueReusablePageWithIdentifier:(NSString *)identifier forIndex:(NSInteger)index
+- (PRSlideViewPage *)dequeueReusablePageWithIdentifier:(NSString *)identifier forIndex:(NSInteger)index
 {
     PRSlideViewPage *reusablePage;
     if ([self.reusablePages.allKeys containsObject:identifier]) {
@@ -370,7 +370,7 @@
     self.loadedPages = [[NSMutableArray alloc] init];
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -379,11 +379,13 @@
     return self;
 }
 
-- (void)awakeFromNib
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    [super awakeFromNib];
-    
-    [self setup];
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
+    }
+    return self;
 }
 
 /*
