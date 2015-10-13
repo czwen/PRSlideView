@@ -14,8 +14,8 @@
 
 @property (nonatomic, strong) NSArray *albumData;
 
-@property (nonatomic, weak) PRSlideView *slideView;
-@property (nonatomic, weak) UILabel *titleLabel;
+@property (nonatomic, strong) PRSlideView *slideView;
+@property (nonatomic, strong) UILabel *titleLabel;
 
 @end
 
@@ -46,30 +46,62 @@
                        @"The Singles Collection 2001-2011"];
     
     CGRect bounds = self.view.bounds;
+    CGFloat titleHeight = 24.f;
     
-    PRSlideView *slideView = [[PRSlideView alloc] initWithFrame:bounds];
-    slideView.delegate = self;
-    slideView.dataSource = self;
-    slideView.infiniteScrollingEnabled = YES;
-    [slideView registerClass:PRAlbumPage.class
-      forPageReuseIdentifier:NSStringFromClass(PRAlbumPage.class)];
-    slideView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
-                                  UIViewAutoresizingFlexibleHeight);
-    self.slideView = slideView;
-    [self.view addSubview:slideView];
-    
-    CGFloat titleHeight = 44.f;
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(bounds),
-                                                                    CGRectGetMaxY(bounds) - titleHeight,
-                                                                    CGRectGetWidth(bounds),
-                                                                    titleHeight)];
-    titleLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
-                                   UIViewAutoresizingFlexibleTopMargin);
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:.6f];
-    titleLabel.textColor = [UIColor whiteColor];
-    self.titleLabel = titleLabel;
-    [self.view addSubview:titleLabel];
+    self.slideView = ({
+        PRSlideView *slideView = [[PRSlideView alloc] initWithFrame:bounds];
+        slideView.delegate = self;
+        slideView.dataSource = self;
+        slideView.infiniteScrollingEnabled = YES;
+        [slideView registerClass:PRAlbumPage.class
+          forPageReuseIdentifier:NSStringFromClass(PRAlbumPage.class)];
+        slideView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                                      UIViewAutoresizingFlexibleHeight);
+        [self.view addSubview:slideView];
+        
+        UIView *titleBackgroundView = [[UIView alloc] initWithFrame:({
+            CGRect frame;
+            CGRect remainder;
+            CGRectDivide(bounds,
+                         &frame,
+                         &remainder,
+                         kPRSlideViewPageControlHeight * 1.5 + titleHeight,
+                         CGRectMaxYEdge);
+            frame = CGRectIntegral(frame);
+            frame;
+        })];
+        titleBackgroundView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                                                UIViewAutoresizingFlexibleTopMargin);
+        titleBackgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:.6f];
+        [slideView insertSubview:titleBackgroundView
+                    belowSubview:slideView.pageControl];
+        
+        self.titleLabel = ({
+            UILabel *titleLabel = [[UILabel alloc] initWithFrame:({
+                CGRect frame;
+                CGRect remainder;
+                CGRectDivide(titleBackgroundView.frame,
+                             &remainder,
+                             &frame,
+                             kPRSlideViewPageControlHeight,
+                             CGRectMaxYEdge);
+                CGRectDivide(frame,
+                             &frame,
+                             &remainder,
+                             titleHeight,
+                             CGRectMaxYEdge);
+                frame;
+            })];
+            titleLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                                           UIViewAutoresizingFlexibleTopMargin);
+            titleLabel.textAlignment = NSTextAlignmentCenter;
+            titleLabel.textColor = [UIColor whiteColor];
+            [slideView addSubview:titleLabel];
+            titleLabel;
+        });
+        
+        slideView;
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated
