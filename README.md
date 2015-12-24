@@ -136,7 +136,7 @@ You can support me by:
 
 ## Contact
 
-* [Telegram](https://telegram.org): [@elethom](http://telegram.me/elethom)
+* [Telegram](http://telegram.me/elethom)
 * [Email](mailto:elethomhunter@gmail.com)
 * [Twitter](https://twitter.com/elethomhunter)
 * [Blog](http://blog.projectrhinestone.org)
