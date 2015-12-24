@@ -8,6 +8,8 @@
 
 #import "PRSlideView.h"
 
+CGFloat const kPRSlideViewPageControlHeight = 17.f;
+
 @interface PRSlideView ()
 
 @property (nonatomic, strong) UIScrollView *scrollView;
