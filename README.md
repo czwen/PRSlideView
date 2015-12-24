@@ -20,7 +20,7 @@ Note: Auto layout not supported due to the special behaviours of `UIScrollView`.
 
 In your `Podfile`:
 
-```
+```Ruby
 pod 'PRSlideView'
 ```
 
@@ -28,7 +28,7 @@ pod 'PRSlideView'
 
 ### Create a Slide View
 
-```
+```Objective-C
 PRSlideView *slideView = [[PRSlideView alloc] initWithFrame:self.view.bounds];
 slideView.delegate = self;
 slideView.dataSource = self;
@@ -45,7 +45,7 @@ self.slideView = slideView;
 
 ### Create a Slide View Page Subclass
 
-```
+```Objective-C
 #import "PRSlideViewPage.h"
 
 @interface PRAlbumPage : PRSlideViewPage
@@ -55,7 +55,7 @@ self.slideView = slideView;
 @end
 ```
 
-```
+```Objective-C
 #import "PRAlbumPage.h"
 
 @implementation PRAlbumPage
@@ -77,7 +77,7 @@ self.slideView = slideView;
 
 ### Use Data Source
 
-```
+```Objective-C
 #pragma mark - PRSlideViewDataSource
 
 - (NSInteger)numberOfPagesInSlideView:(PRSlideView *)slideView
@@ -99,7 +99,7 @@ self.slideView = slideView;
 
 ### Use Delegate
 
-```
+```Objective-C
 #pragma mark - PRSlideViewDelegate
 
 - (void)slideView:(PRSlideView *)slideView didScrollToPageAtIndex:(NSInteger)index
