@@ -2,8 +2,6 @@
 
 [![Cocoapods](https://cocoapod-badges.herokuapp.com/v/PRSlideView/badge.png)](http://cocoapods.org/?q=PRSlideView)
 
-## General
-
 Slide view with gracefully written UIKit-like methods, delegate and data source protocol.
 
 Note: Auto layout not supported due to the special behaviours of `UIScrollView`. Please use autoresizing mask instead or wrap it with a container view.
