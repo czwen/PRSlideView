@@ -1,6 +1,11 @@
 # PRSlideView
 
-[![Cocoapods](https://cocoapod-badges.herokuapp.com/v/PRSlideView/badge.png)](http://cocoapods.org/?q=PRSlideView)
+[![CocoaPods](https://img.shields.io/cocoapods/v/PRSlideView.svg)](https://cocoapods.org/pods/PRSlideView)
+[![Language](https://img.shields.io/badge/language-Objective--C-blue.svg)](../../search)
+[![License](https://img.shields.io/github/license/Elethom/PRSlideView.svg)](/LICENSE)
+
+[![Tweet](https://img.shields.io/twitter/url/http/ElethomHunter.svg?style=social)](https://twitter.com/intent/tweet?text=PRSlideView%3A%20Slide%20view%20with%20gracefully%20written%20UIKit-like%20APIs.&url=https%3A%2F%2Fgithub.com%2FElethom%2FPRSlideView&via=ElethomHunter)
+[![Twitter](https://img.shields.io/twitter/follow/ElethomHunter.svg?style=social)](https://twitter.com/intent/follow?user_id=1512633926)
 
 Slide view with gracefully written UIKit-like methods, delegate and data source protocol.
 
