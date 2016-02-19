@@ -430,6 +430,10 @@ CGFloat const kPRSlideViewPageControlHeight = 17.f;
     return self;
 }
 
+- (void)dealloc {
+    [_scrollView removeObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset))];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
